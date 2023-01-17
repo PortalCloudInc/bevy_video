@@ -1,0 +1,21 @@
+[package]
+authors = ["Brandon Dyer"]
+description = "Decode and render h264 video in Bevy"
+edition = "2021"
+license = "MIT"
+name = "bevy_avc"
+repository = "https://github.com/PortalCloudInc/bevy_avc"
+version = "0.9.0"
+
+[workspace]
+members = ["examples/video_streaming"]
+resolver = "2"
+
+[dependencies]
+openh264 = {version = "0.3"}
+serde = "1.0"
+
+[dependencies.bevy]
+default-features = false
+features = ["bevy_asset", "bevy_render"]
+version = "0.9"
