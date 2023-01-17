@@ -4,6 +4,7 @@ description = "Decode and render h264 video in Bevy"
 edition = "2021"
 license = "MIT"
 name = "bevy_avc"
+readme = "README.md"
 repository = "https://github.com/PortalCloudInc/bevy_avc"
 version = "0.9.0"
 
