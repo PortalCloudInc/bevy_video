@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use bevy_avc::{nal_units, prelude::*};
+use bevy_video::{nal_units, prelude::*};
 
 #[derive(Resource)]
 struct NalUnits(usize, Vec<Vec<u8>>);
@@ -10,7 +10,7 @@ fn main() {
         .add_plugin(VideoPlugin)
         .insert_resource(NalUnits(
             0,
-            nal_units(include_bytes!("./test.h264"))
+            nal_units(include_bytes!("./test.h264")) // https://software-download.name/sample-h264-video-file/download.html
                 .map(|nal| nal.to_vec())
                 .collect(),
         ))
@@ -41,16 +41,16 @@ fn setup(
         ..default()
     });
 
-    // cube
-    commands.spawn(PbrBundle {
-        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-        material: materials.add(StandardMaterial {
-            base_color_texture: Some(image_handle),
-            ..default()
-        }),
-        transform: Transform::from_xyz(0.0, 0.5, 0.0),
-        ..default()
-    });
+    // // cube
+    // commands.spawn(PbrBundle {
+    //     mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+    //     material: materials.add(StandardMaterial {
+    //         base_color_texture: Some(image_handle),
+    //         ..default()
+    //     }),
+    //     transform: Transform::from_xyz(0.0, 0.5, 0.0),
+    //     ..default()
+    // });
 
     // light
     commands.spawn(PointLightBundle {

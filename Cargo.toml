@@ -3,9 +3,9 @@ authors = ["Brandon Dyer"]
 description = "Decode and render h264 video in Bevy"
 edition = "2021"
 license = "MIT"
-name = "bevy_avc"
+name = "bevy_video"
 readme = "README.md"
-repository = "https://github.com/PortalCloudInc/bevy_avc"
+repository = "https://github.com/PortalCloudInc/bevy_video"
 version = "0.9.0"
 
 [workspace]
