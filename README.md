@@ -1,6 +1,6 @@
-# Bevy AVC
+# Bevy Video
 
-Stream video to your Bevy app!
+Stream or play video in your Bevy app!
 
 ```rust
 use bevy::prelude::*;
@@ -34,10 +34,12 @@ fn push_frame(
     for _ in materials.iter_mut() {
         // otherwise the image on screen wont update
     }
+
     for decoder in decoders.iter() {
         decoder.add_video_packet(/* Vec<u8> representing an H.264 packet */);
+
         // Note: packets are decoded asynchronously in another thread
-        // The `Image` will update automatically
+        // The Images will update automatically
     }
 }
 ```
