@@ -5,6 +5,6 @@ pub struct VideoPlugin;
 
 impl Plugin for VideoPlugin {
     fn build(&self, app: &mut App) {
-        app.add_system(apply_decode);
+        app.add_systems(Update, apply_decode);
     }
 }

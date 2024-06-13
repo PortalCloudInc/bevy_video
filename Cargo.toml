@@ -19,4 +19,4 @@ serde = "1.0"
 [dependencies.bevy]
 default-features = false
 features = ["bevy_asset", "bevy_render"]
-version = "0.9"
+version = "0.13"

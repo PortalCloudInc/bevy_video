@@ -98,6 +98,7 @@ impl VideoDecoder {
                 usage: TextureUsages::COPY_DST
                     | TextureUsages::TEXTURE_BINDING
                     | TextureUsages::RENDER_ATTACHMENT,
+                view_formats: &[TextureFormat::Bgra8UnormSrgb],
             },
             ..default()
         };
