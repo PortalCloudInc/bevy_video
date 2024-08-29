@@ -7,16 +7,16 @@ struct NalUnits(usize, Vec<Vec<u8>>);
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_plugin(VideoPlugin)
+        .add_plugins(VideoPlugin)
         .insert_resource(NalUnits(
             0,
             nal_units(include_bytes!("./test.h264")) // https://software-download.name/sample-h264-video-file/download.html
                 .map(|nal| nal.to_vec())
                 .collect(),
         ))
-        .add_startup_system(setup)
-        .add_system(push_frame)
-        .add_system(rotate_camera)
+        .add_systems(Startup, setup)
+        .add_systems(Update, push_frame)
+        .add_systems(Update, rotate_camera)
         .run();
 }
 
@@ -33,7 +33,7 @@ fn setup(
 
     // plane
     commands.spawn(PbrBundle {
-        mesh: meshes.add(Mesh::from(shape::Plane { size: 5.0 })),
+        mesh: meshes.add(Mesh::from(Plane3d::default().mesh().size(5., 5.))),
         material: materials.add(StandardMaterial {
             base_color_texture: Some(image_handle.clone()),
             ..default()
@@ -42,15 +42,15 @@ fn setup(
     });
 
     // // cube
-    // commands.spawn(PbrBundle {
-    //     mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-    //     material: materials.add(StandardMaterial {
-    //         base_color_texture: Some(image_handle),
-    //         ..default()
-    //     }),
-    //     transform: Transform::from_xyz(0.0, 0.5, 0.0),
-    //     ..default()
-    // });
+    commands.spawn(PbrBundle {
+        mesh: meshes.add(Mesh::from(Cuboid::new(1., 1., 1.))),
+        material: materials.add(StandardMaterial {
+            base_color_texture: Some(image_handle),
+            ..default()
+        }),
+        transform: Transform::from_xyz(0.0, 0.5, 0.0),
+        ..default()
+    });
 
     // light
     commands.spawn(PointLightBundle {
