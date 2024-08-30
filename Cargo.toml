@@ -13,10 +13,10 @@ members = ["examples/video_streaming"]
 resolver = "2"
 
 [dependencies]
-openh264 = {version = "0.3"}
+openh264 = {version = "0.4"}
 serde = "1.0"
 
 [dependencies.bevy]
 default-features = false
 features = ["bevy_asset", "bevy_render"]
-version = "0.13"
+version = "0.14"
